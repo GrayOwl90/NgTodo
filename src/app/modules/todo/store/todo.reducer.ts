@@ -24,16 +24,23 @@ export const todoReducer = (state = initialState, action: TodoActions) => {
           {
             id: state.idIncrement,
             title: action.payload.title,
-            isCompleted: false,
-            isExpired: false
+            isCompleted: false
           }
         ]
       };
-    // case todoActionsType.delete:
-    //   return {
-    //     ...state,
-    //     todoList: state.todoList.filter(todo => todo.id !== action.payload.id),
-    //   }
+    case todoActionsType.toggle:
+      return {
+        ...state,
+        todoList: state.todoList.map(todo => todo.id === action.payload.id ? {
+          ...todo,
+          isCompleted: !todo.isCompleted
+        } : todo)
+      };
+    case todoActionsType.delete:
+      return {
+        ...state,
+        todoList: state.todoList.filter(todo => todo.id !== action.payload.id),
+      };
     default:
       return state;
   }

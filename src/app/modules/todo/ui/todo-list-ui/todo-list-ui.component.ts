@@ -14,6 +14,9 @@ export class TodoListUiComponent implements OnInit {
   @Output()
   delete = new EventEmitter<number>();
 
+  @Output()
+  toggle = new EventEmitter<number>();
+
   constructor() { }
 
   ngOnInit() {
@@ -21,5 +24,9 @@ export class TodoListUiComponent implements OnInit {
 
   onDelete(id: number) {
     this.delete.emit(id);
+  }
+
+  onToggle(id: number) {
+    this.toggle.emit(id);
   }
 }
