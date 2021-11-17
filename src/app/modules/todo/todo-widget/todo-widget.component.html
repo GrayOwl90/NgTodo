@@ -1,0 +1,7 @@
+<h1>Create todo list</h1>
+
+<app-todo-form-ui (create)="onCreate($event)"></app-todo-form-ui>
+
+<app-todo-list-ui [todoList]="todoList$ | async"
+                  (delete)="onDelete($event)"
+></app-todo-list-ui>

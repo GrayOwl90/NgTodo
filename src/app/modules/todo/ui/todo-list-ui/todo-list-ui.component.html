@@ -1,0 +1,12 @@
+<table>
+  <tr *ngFor="let todo of todoList">
+    <td>
+      <label>
+        <input type="checkbox" [checked]="todo.isCompleted">
+        <span *ngIf="todo.isCompleted">{{todo.title}}</span>
+        <del *ngIf="!todo.isCompleted"><span>{{todo.title}}</span></del>
+      </label>
+      <span (click)="onDelete(todo.id)">Delete</span>
+    </td>
+  </tr>
+</table>
